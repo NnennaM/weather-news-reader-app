@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label stacked>
+      <h5> City </h5>
+      <br />
+      <br />
+      <br />
+    </ion-label>
+
+
+
+    <ion-input [(ngModel)]="city_name" name="city_name" type="text"></ion-input>
+  </ion-item>
+
+  <h3>Settings</h3>
+
+  <ion-list radio-group [(ngModel)]="units" name="units">
+    <ion-list-header>
+      Units:
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Standard</ion-label>
+      <ion-radio value="standard"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Metric</ion-label>
+      <ion-radio value="metric"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Imperial</ion-label>
+      <ion-radio value="imperial"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button (click)="savePage()">Save</button>
+
+</ion-content>

@@ -1,14 +1,52 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>G00388219</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="openSettings()">
+				<ion-icon name="settings"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
-</ion-content>
+	<h3><i>{{myDate | date}}</i></h3>
+	<h1>Weather for {{city_name}}</h1>
+	<ion-list *ngFor="let w of weather">
+		<img width="100" height="100" src="https://openweathermap.org/img/w/{{w.icon}}.png">
+		<h2>{{w.main}}</h2>
+		<p>({{w.description}})</p>
+	</ion-list>
+	<ion-list *ngIf="main; else noData">
+		<h2>Temperature: {{main.temp}}&deg; </h2>
+		<p>(Feels like: {{main.feels_like}} )</p>
+	</ion-list>
+	<ion-item>
+	<ng-template #noData>
+		<ion-list>
+			<br />
+			<br />
+			<h3>City not found</h3>
+			<p> 0 </p>
+			<h3>Temperature: </h3>
+			<p>(Feels like: )</p>
+		</ion-list>
+	</ng-template>
+   </ion-item>
+
+    <ion-item>
+	<button ion-button [disabled]="buttonDisabled" (click)="openNews()">News</button>
+	</ion-item>
+	<br />
+	<ion-list *ngIf="showNews && articles.length">
+		<h3>Total News Stories from : {{totalResults}}</h3>
+		<ion-item *ngFor="let a of articles">
+			<a href="{{a.url}}" target="_blank">
+
+				<img width="120" height="120" src={{a.urlToImage}}>
+				<p>{{a.title}},{{a.url}}</p>
+				<p>{{a.description}}, {{a.url}}</p>
+			</a>
+		</ion-item>
+	</ion-list>
+	<ion-content>
